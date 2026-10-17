@@ -1,0 +1,118 @@
+columna,codigo_original,rezago,descripcion,unidad_original,unidad_limpia,tipo,rol
+id_proyecto,derivada,,Identificador asignado en la limpieza,,,str,auxiliar (no predictora)
+anio_inicio,derivada,,"Año de inicio (calendario persa, 4 dígitos)",,,int64,predictora
+trimestre_inicio,derivada,,Trimestre de inicio (persa; 1 = primavera),,,int64,predictora
+anio_fin,derivada,,"Año de término (calendario persa, 4 dígitos)",,,int64,excluida: Fecha de término: posterior al momento de estimar (fuga de información)
+trimestre_fin,derivada,,Trimestre de término (persa),,,int64,excluida: Fecha de término: posterior al momento de estimar (fuga de información)
+localidad,V-1,,Localidad del proyecto (código postal agrupado 1–20),N/A,categórica,int64,predictora
+area_construida_m2,V-2,,Área total construida del edificio,m2,m2,float64,predictora
+area_terreno_m2,V-3,,Área del terreno,m2,m2,float64,predictora
+costo_prelim_total,V-4,,Costo preliminar total estimado con precios al inicio,10M IRR,MIRR,float64,excluida: Redundante: costo_prelim_m2 × area_construida_m2 (identidad verificada)
+costo_prelim_m2,V-5,,Costo preliminar estimado por m2 con precios al inicio,10k IRR,MIRR/m2,float64,predictora
+costo_prelim_m2_base,V-6,,Costo preliminar equivalente por m2 en el año base (1383),10k IRR,MIRR/m2,float64,predictora
+duracion_trimestres,V-7,,Duración de la construcción,trimestres,trimestres,int64,predictora
+precio_venta_inicial_m2,V-8,,Precio de la unidad por m2 al inicio del proyecto,10k IRR,MIRR/m2,float64,predictora
+permisos_emitidos_r1,V-11,1,Número de permisos de construcción emitidos,N/A,N/A,float64,predictora
+indice_servicios_construccion_r1,V-12,1,"Índice de servicios de construcción (BSI), año base",N/A,N/A,float64,predictora
+indice_precios_materiales_r1,V-13,1,"Índice de precios al mayoreo de materiales (WPI), año base",N/A,N/A,float64,predictora
+area_permisos_m2_r1,V-14,1,Área total de los permisos emitidos por el municipio,m2,m2,float64,predictora
+liquidez_acumulada_r1,V-15,1,Liquidez acumulada,10M IRR,MIRR,float64,predictora
+inversion_privada_edificacion_r1,V-16,1,Inversión del sector privado en edificios nuevos,10M IRR,MIRR,float64,predictora
+indice_precio_suelo_r1,V-17,1,"Índice de precio del suelo, año base",10M IRR,MIRR,float64,predictora
+num_creditos_r1,V-18,1,Número de créditos otorgados por bancos en el trimestre,N/A,N/A,float64,predictora
+monto_creditos_r1,V-19,1,Monto de créditos otorgados por bancos en el trimestre,10M IRR,MIRR,float64,predictora
+tasa_interes_r1,V-20,1,Tasa de interés de los créditos,%,%,int64,predictora
+costo_promedio_fin_m2_r1,V-21,1,Costo promedio de construcción privada al terminar,10k IRR/m2,MIRR/m2,float64,predictora
+costo_promedio_inicio_m2_r1,V-22,1,Costo promedio de construcción privada al iniciar,10k IRR/m2,MIRR/m2,float64,predictora
+tipo_cambio_oficial_r1,V-23,1,Tipo de cambio oficial respecto al dólar,IRR,MIRR,float64,predictora
+tipo_cambio_mercado_r1,V-24,1,Tipo de cambio no oficial (mercado) respecto al dólar,IRR,MIRR,float64,predictora
+inpc_r1,V-25,1,"Índice de precios al consumidor (CPI), año base",N/A,N/A,float64,predictora
+inpc_vivienda_r1,V-26,1,"CPI de vivienda, agua, combustible y energía, año base",N/A,N/A,float64,predictora
+indice_bolsa_r1,V-27,1,Índice del mercado de valores,N/A,N/A,float64,predictora
+poblacion_ciudad_r1,V-28,1,Población de la ciudad,N/A,N/A,float64,predictora
+precio_oro_onza_r1,V-29,1,Precio del oro por onza,IRR,MIRR,float64,predictora
+permisos_emitidos_r2,V-11,2,Número de permisos de construcción emitidos,N/A,N/A,float64,predictora
+indice_servicios_construccion_r2,V-12,2,"Índice de servicios de construcción (BSI), año base",N/A,N/A,float64,predictora
+indice_precios_materiales_r2,V-13,2,"Índice de precios al mayoreo de materiales (WPI), año base",N/A,N/A,float64,predictora
+area_permisos_m2_r2,V-14,2,Área total de los permisos emitidos por el municipio,m2,m2,float64,predictora
+liquidez_acumulada_r2,V-15,2,Liquidez acumulada,10M IRR,MIRR,float64,predictora
+inversion_privada_edificacion_r2,V-16,2,Inversión del sector privado en edificios nuevos,10M IRR,MIRR,float64,predictora
+indice_precio_suelo_r2,V-17,2,"Índice de precio del suelo, año base",10M IRR,MIRR,float64,predictora
+num_creditos_r2,V-18,2,Número de créditos otorgados por bancos en el trimestre,N/A,N/A,float64,predictora
+monto_creditos_r2,V-19,2,Monto de créditos otorgados por bancos en el trimestre,10M IRR,MIRR,float64,predictora
+tasa_interes_r2,V-20,2,Tasa de interés de los créditos,%,%,int64,predictora
+costo_promedio_fin_m2_r2,V-21,2,Costo promedio de construcción privada al terminar,10k IRR/m2,MIRR/m2,float64,predictora
+costo_promedio_inicio_m2_r2,V-22,2,Costo promedio de construcción privada al iniciar,10k IRR/m2,MIRR/m2,float64,predictora
+tipo_cambio_oficial_r2,V-23,2,Tipo de cambio oficial respecto al dólar,IRR,MIRR,float64,predictora
+tipo_cambio_mercado_r2,V-24,2,Tipo de cambio no oficial (mercado) respecto al dólar,IRR,MIRR,float64,predictora
+inpc_r2,V-25,2,"Índice de precios al consumidor (CPI), año base",N/A,N/A,float64,predictora
+inpc_vivienda_r2,V-26,2,"CPI de vivienda, agua, combustible y energía, año base",N/A,N/A,float64,predictora
+indice_bolsa_r2,V-27,2,Índice del mercado de valores,N/A,N/A,float64,predictora
+poblacion_ciudad_r2,V-28,2,Población de la ciudad,N/A,N/A,float64,predictora
+precio_oro_onza_r2,V-29,2,Precio del oro por onza,IRR,MIRR,float64,predictora
+permisos_emitidos_r3,V-11,3,Número de permisos de construcción emitidos,N/A,N/A,float64,predictora
+indice_servicios_construccion_r3,V-12,3,"Índice de servicios de construcción (BSI), año base",N/A,N/A,float64,predictora
+indice_precios_materiales_r3,V-13,3,"Índice de precios al mayoreo de materiales (WPI), año base",N/A,N/A,float64,predictora
+area_permisos_m2_r3,V-14,3,Área total de los permisos emitidos por el municipio,m2,m2,float64,predictora
+liquidez_acumulada_r3,V-15,3,Liquidez acumulada,10M IRR,MIRR,float64,predictora
+inversion_privada_edificacion_r3,V-16,3,Inversión del sector privado en edificios nuevos,10M IRR,MIRR,float64,predictora
+indice_precio_suelo_r3,V-17,3,"Índice de precio del suelo, año base",10M IRR,MIRR,float64,predictora
+num_creditos_r3,V-18,3,Número de créditos otorgados por bancos en el trimestre,N/A,N/A,float64,predictora
+monto_creditos_r3,V-19,3,Monto de créditos otorgados por bancos en el trimestre,10M IRR,MIRR,float64,predictora
+tasa_interes_r3,V-20,3,Tasa de interés de los créditos,%,%,int64,predictora
+costo_promedio_fin_m2_r3,V-21,3,Costo promedio de construcción privada al terminar,10k IRR/m2,MIRR/m2,float64,predictora
+costo_promedio_inicio_m2_r3,V-22,3,Costo promedio de construcción privada al iniciar,10k IRR/m2,MIRR/m2,float64,predictora
+tipo_cambio_oficial_r3,V-23,3,Tipo de cambio oficial respecto al dólar,IRR,MIRR,float64,predictora
+tipo_cambio_mercado_r3,V-24,3,Tipo de cambio no oficial (mercado) respecto al dólar,IRR,MIRR,float64,predictora
+inpc_r3,V-25,3,"Índice de precios al consumidor (CPI), año base",N/A,N/A,float64,predictora
+inpc_vivienda_r3,V-26,3,"CPI de vivienda, agua, combustible y energía, año base",N/A,N/A,float64,predictora
+indice_bolsa_r3,V-27,3,Índice del mercado de valores,N/A,N/A,float64,predictora
+poblacion_ciudad_r3,V-28,3,Población de la ciudad,N/A,N/A,float64,predictora
+precio_oro_onza_r3,V-29,3,Precio del oro por onza,IRR,MIRR,float64,predictora
+permisos_emitidos_r4,V-11,4,Número de permisos de construcción emitidos,N/A,N/A,float64,predictora
+indice_servicios_construccion_r4,V-12,4,"Índice de servicios de construcción (BSI), año base",N/A,N/A,float64,predictora
+indice_precios_materiales_r4,V-13,4,"Índice de precios al mayoreo de materiales (WPI), año base",N/A,N/A,float64,predictora
+area_permisos_m2_r4,V-14,4,Área total de los permisos emitidos por el municipio,m2,m2,float64,predictora
+liquidez_acumulada_r4,V-15,4,Liquidez acumulada,10M IRR,MIRR,float64,predictora
+inversion_privada_edificacion_r4,V-16,4,Inversión del sector privado en edificios nuevos,10M IRR,MIRR,float64,predictora
+indice_precio_suelo_r4,V-17,4,"Índice de precio del suelo, año base",10M IRR,MIRR,float64,predictora
+num_creditos_r4,V-18,4,Número de créditos otorgados por bancos en el trimestre,N/A,N/A,float64,predictora
+monto_creditos_r4,V-19,4,Monto de créditos otorgados por bancos en el trimestre,10M IRR,MIRR,float64,predictora
+tasa_interes_r4,V-20,4,Tasa de interés de los créditos,%,%,int64,predictora
+costo_promedio_fin_m2_r4,V-21,4,Costo promedio de construcción privada al terminar,10k IRR/m2,MIRR/m2,float64,predictora
+costo_promedio_inicio_m2_r4,V-22,4,Costo promedio de construcción privada al iniciar,10k IRR/m2,MIRR/m2,float64,predictora
+tipo_cambio_oficial_r4,V-23,4,Tipo de cambio oficial respecto al dólar,IRR,MIRR,float64,predictora
+tipo_cambio_mercado_r4,V-24,4,Tipo de cambio no oficial (mercado) respecto al dólar,IRR,MIRR,float64,predictora
+inpc_r4,V-25,4,"Índice de precios al consumidor (CPI), año base",N/A,N/A,float64,predictora
+inpc_vivienda_r4,V-26,4,"CPI de vivienda, agua, combustible y energía, año base",N/A,N/A,float64,predictora
+indice_bolsa_r4,V-27,4,Índice del mercado de valores,N/A,N/A,float64,predictora
+poblacion_ciudad_r4,V-28,4,Población de la ciudad,N/A,N/A,float64,predictora
+precio_oro_onza_r4,V-29,4,Precio del oro por onza,IRR,MIRR,float64,predictora
+permisos_emitidos_r5,V-11,5,Número de permisos de construcción emitidos,N/A,N/A,float64,predictora
+indice_servicios_construccion_r5,V-12,5,"Índice de servicios de construcción (BSI), año base",N/A,N/A,float64,predictora
+indice_precios_materiales_r5,V-13,5,"Índice de precios al mayoreo de materiales (WPI), año base",N/A,N/A,float64,predictora
+area_permisos_m2_r5,V-14,5,Área total de los permisos emitidos por el municipio,m2,m2,float64,predictora
+liquidez_acumulada_r5,V-15,5,Liquidez acumulada,10M IRR,MIRR,float64,predictora
+inversion_privada_edificacion_r5,V-16,5,Inversión del sector privado en edificios nuevos,10M IRR,MIRR,float64,predictora
+indice_precio_suelo_r5,V-17,5,"Índice de precio del suelo, año base",10M IRR,MIRR,float64,predictora
+num_creditos_r5,V-18,5,Número de créditos otorgados por bancos en el trimestre,N/A,N/A,float64,predictora
+monto_creditos_r5,V-19,5,Monto de créditos otorgados por bancos en el trimestre,10M IRR,MIRR,float64,predictora
+tasa_interes_r5,V-20,5,Tasa de interés de los créditos,%,%,int64,predictora
+costo_promedio_fin_m2_r5,V-21,5,Costo promedio de construcción privada al terminar,10k IRR/m2,MIRR/m2,float64,predictora
+costo_promedio_inicio_m2_r5,V-22,5,Costo promedio de construcción privada al iniciar,10k IRR/m2,MIRR/m2,float64,predictora
+tipo_cambio_oficial_r5,V-23,5,Tipo de cambio oficial respecto al dólar,IRR,MIRR,float64,predictora
+tipo_cambio_mercado_r5,V-24,5,Tipo de cambio no oficial (mercado) respecto al dólar,IRR,MIRR,float64,predictora
+inpc_r5,V-25,5,"Índice de precios al consumidor (CPI), año base",N/A,N/A,float64,predictora
+inpc_vivienda_r5,V-26,5,"CPI de vivienda, agua, combustible y energía, año base",N/A,N/A,float64,predictora
+indice_bolsa_r5,V-27,5,Índice del mercado de valores,N/A,N/A,float64,predictora
+poblacion_ciudad_r5,V-28,5,Población de la ciudad,N/A,N/A,float64,predictora
+precio_oro_onza_r5,V-29,5,Precio del oro por onza,IRR,MIRR,float64,predictora
+precio_venta_real_m2,V-9,,Precio real de venta (salida; se excluye por fuga de información),10k IRR,MIRR/m2,float64,excluida: Salida del proyecto: sólo se conoce al vender (fuga de información)
+costo_real_m2,V-10,,Costo real de construcción por m2 (VARIABLE OBJETIVO),10k IRR,MIRR/m2,float64,objetivo
+anio_inicio_greg_aprox,derivada,,Año de inicio gregoriano aproximado (+621),,,int64,auxiliar (no predictora)
+indice_tiempo_inicio,derivada,,Trimestres transcurridos desde 1372 T0 al inicio,,,int64,predictora
+anio_fin_greg_aprox,derivada,,Año de término gregoriano aproximado (+621),,,int64,auxiliar (no predictora)
+indice_tiempo_fin,derivada,,Trimestres transcurridos desde 1372 T0 al término,,,int64,excluida: Derivada de la fecha de término (fuga de información)
+razon_real_vs_preliminar,derivada,,Costo real / costo preliminar por m2 (desviación de costo),,,float64,auxiliar (no predictora)
+anomalia_costo_m2,derivada,,Bandera: costo real por m2 atípico (3·IQR en log),,,bool,auxiliar (no predictora)
+anomalia_razon_costo,derivada,,Bandera: desviación de costo atípica (3·IQR en log),,,bool,auxiliar (no predictora)

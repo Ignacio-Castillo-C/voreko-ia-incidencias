@@ -1,0 +1,80 @@
+{
+  "version_datos": "1.0.0",
+  "fuente": "UCI Machine Learning Repository, Residential Building Data Set (id 437), CC BY 4.0, doi:10.24432/C5S896",
+  "obtenido_de": [
+    "https://archive.ics.uci.edu/static/public/437/residential+building+data+set.zip",
+    "https://raw.githubusercontent.com/rita316/TehranRealEstateProfitability/master/Residential-Building-Data-Set.xlsx",
+    "https://raw.githubusercontent.com/trisa-biswas/Residential-Building-Price-Prediction/master/data/Residential-Building-Data-Set.xlsx"
+  ],
+  "filas_original": 372,
+  "columnas_original": 109,
+  "filas_limpio": 372,
+  "columnas_limpio": 117,
+  "predictoras": 105,
+  "objetivo": "costo_real_m2",
+  "huellas_sha256": {
+    "archivo_original_xlsx": "56ccbc261b0f1ceb50e10e3f0cd02794f8cdd16a3ffb9788eeb505e706642655",
+    "contenido_original_hoja_Data": "7e736374a647e1f64f930dab167dcf93bf8018c9d17b8a5891e5ce257b4671cd",
+    "csv_limpio": "47e7de7fe5d195f1d1852bce258d43333044206db340d88128b069ed3fb5424b"
+  },
+  "reporte": {
+    "1_encabezados": {
+      "filas_encabezado": 2,
+      "columnas": 109,
+      "codigos_repetidos_en_original": 76,
+      "nombres_unicos_tras_aplanar": true
+    },
+    "2_tipos": {
+      "tipos_antes": {
+        "object": 109
+      },
+      "tipos_despues": {
+        "float64": 94,
+        "int64": 15
+      },
+      "valores_no_convertibles": 0
+    },
+    "3_nulos": {
+      "nulos_totales": 0,
+      "filas_sin_objetivo_eliminadas": 0,
+      "celdas_imputadas_mediana": 0
+    },
+    "4_duplicados": {
+      "filas_iniciales": 372,
+      "duplicados_exactos": 0,
+      "duplicados_por_clave_proyecto": 0,
+      "registros_en_grupos_casi_duplicados": 0,
+      "columnas_duplicadas_eliminadas": [],
+      "columnas_constantes_eliminadas": [],
+      "filas_finales": 372
+    },
+    "5_reglas_negocio": {
+      "violaciones_por_regla": {
+        "trimestres_en_1_4": 0,
+        "localidad_en_1_20": 0,
+        "areas_y_costos_positivos": 0,
+        "area_construida_mayor_o_igual_terreno": 0,
+        "costo_total_igual_m2_por_area": 0,
+        "fin_igual_inicio_mas_duracion": 0,
+        "duracion_positiva": 0
+      },
+      "filas_eliminadas": 0
+    },
+    "6_estandarizacion": {
+      "columnas_monetarias_a_MIRR": 51,
+      "rango_anios_persas": [
+        1372,
+        1390
+      ],
+      "rango_anios_gregorianos_aprox": [
+        1993,
+        2011
+      ]
+    },
+    "7_anomalias": {
+      "anomalias_costo_m2": 0,
+      "anomalias_razon_costo": 12,
+      "razon_mediana": 1.41
+    }
+  }
+}
