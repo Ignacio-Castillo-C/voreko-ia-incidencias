@@ -1,5 +1,5 @@
 columna,codigo_original,rezago,descripcion,unidad_original,unidad_limpia,tipo,rol
-id_proyecto,derivada,,Identificador asignado en la limpieza,,,str,auxiliar (no predictora)
+id_proyecto,derivada,,Identificador asignado en la limpieza,,,object,auxiliar (no predictora)
 anio_inicio,derivada,,"Año de inicio (calendario persa, 4 dígitos)",,,int64,predictora
 trimestre_inicio,derivada,,Trimestre de inicio (persa; 1 = primavera),,,int64,predictora
 anio_fin,derivada,,"Año de término (calendario persa, 4 dígitos)",,,int64,excluida: Fecha de término: posterior al momento de estimar (fuga de información)

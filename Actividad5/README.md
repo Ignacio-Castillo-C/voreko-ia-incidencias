@@ -58,7 +58,7 @@ git clone https://github.com/Ignacio-Castillo-C/voreko-ia-incidencias.git && cd 
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 python fuentes/datos_prep.py        # obtiene el original (UCI o espejos) y genera datos_limp/
-python fuentes/train.py             # experimento completo y registro en MLflow (≈ 28 min en CPU)
+python fuentes/train.py             # experimento completo y registro en MLflow (≈ 50 min en CPU)
 python -m pytest -q tests           # 12 pruebas
 mlflow ui --backend-store-uri sqlite:///mlflow.db      # panel en http://127.0.0.1:5000
 ```
@@ -94,14 +94,17 @@ La comparación entre modelos se hace con **validación cruzada anidada** (5×3 
 
 ## 6. Resultados y conclusiones
 
+Ejecución de referencia: Google Colab (CPU), 2026-10-17, commit `7186446`; 75 runs en MLflow.
+
+
 | Modelo | RMSE (anidada) | MAE | R² | MAPE | Prueba: MAE / RMSE / R² |
 |---|---|---|---|---|---|
 | **XGBoost** | **0.333** | **0.189** | **0.953** | **9.6 %** | 0.188 / 0.429 / 0.941 |
-| Random Forest | 0.355 | 0.213 | 0.947 | 11.1 % | 0.240 / 0.477 / 0.927 |
+| Random Forest | 0.356 | 0.212 | 0.947 | 11.1 % | 0.240 / 0.477 / 0.927 |
 | Regla presupuestal | 0.416 | 0.262 | 0.928 | 13.4 % | 0.294 / 0.440 / 0.938 |
 | Ridge | 0.573 | 0.282 | 0.785 | 16.0 % | 0.393 / 1.442 / 0.331 |
 
-- **XGBoost** es el mejor en todas las métricas y supera a la regla presupuestal en los 15 folds (Wilcoxon p = 0.0004), aunque con la *t* corregida, más conservadora, p = 0.09. Su ventaja sobre Random Forest **no es estadísticamente significativa**; se elige por menor MAE y MAPE, menor variabilidad entre folds y menor tiempo de ajuste.
+- **XGBoost** es el mejor en todas las métricas y supera a la regla presupuestal en los 15 folds (Wilcoxon p = 0.0004), aunque con la *t* corregida, más conservadora, p = 0.09. Su ventaja sobre Random Forest **no es estadísticamente significativa**; se elige por menor MAE y MAPE, porque incorpora el ajuste por inflación y por su menor tiempo de ajuste.
 - **Ridge** extrapola mal las obras fuera del rango de su época (falla en 3 de 15 folds y en prueba): no es apto como modelo de alertas sin acotar sus predicciones.
 - El modelo quedó registrado como `voreko_costo_real_m2` (alias `candidato`). Antes de usarlo en VOREKO se requiere validarlo con obras reales en México.
 

@@ -1,0 +1,134 @@
+{
+  "tracking_uri": "sqlite:////content/repo/Actividad5/mlflow.db",
+  "experimento": "VOREKO-A5-costo-real-m2",
+  "experiment_id": "1",
+  "runs_registrados": 75,
+  "datos": {
+    "version_datos": "1.0.0",
+    "filas_limpio": 372,
+    "predictoras": 105
+  },
+  "particion": {
+    "entrenamiento": 297,
+    "prueba": 75
+  },
+  "modelos": {
+    "Ridge": {
+      "mejores_params": {
+        "alpha": 100.0,
+        "rezagos": "todos"
+      },
+      "cv_rmse": 0.4329847490945635,
+      "cv_rmse_std": 0.12413662609628637,
+      "cv_mae": 0.27250730124018824,
+      "cv_r2": 0.9114768556390024,
+      "test_mae": 0.3933271785850044,
+      "test_rmse": 1.4418077854007239,
+      "test_r2": 0.33141995622083786,
+      "test_mape": 0.1491196823280964,
+      "run_id": "75d19093440e40dda42d33dc3270cfdf",
+      "model_uri": "models:/m-8da8039b79ab497e986e3fa314cdabe1",
+      "candidatos": 12,
+      "segundos": 2.0,
+      "top_variables": {
+        "costo_prelim_m2_base": 0.1814,
+        "costo_prelim_m2": 0.0962,
+        "duracion_trimestres": 0.0731,
+        "localidad_20": 0.0471,
+        "precio_venta_inicial_m2": 0.0413
+      }
+    },
+    "RandomForest": {
+      "mejores_params": {
+        "max_depth": 10,
+        "max_features": 1.0,
+        "min_samples_leaf": 3,
+        "rezagos": "r1"
+      },
+      "cv_rmse": 0.36938716217111184,
+      "cv_rmse_std": 0.08385418915131353,
+      "cv_mae": 0.2136242703219974,
+      "cv_r2": 0.9449152423795166,
+      "test_mae": 0.2397301056289918,
+      "test_rmse": 0.4769570253883059,
+      "test_r2": 0.9268360444695443,
+      "test_mape": 0.1029979104679599,
+      "run_id": "46389bcaceac4e198768621762abe1b9",
+      "model_uri": "models:/m-1998715358b14fff8919a977501737ac",
+      "candidatos": 24,
+      "segundos": 181.1,
+      "top_variables": {
+        "costo_prelim_m2": 0.9049,
+        "precio_venta_inicial_m2": 0.0423,
+        "costo_prelim_m2_base": 0.0138,
+        "duracion_trimestres": 0.0075,
+        "costo_promedio_fin_m2_r1": 0.0035
+      }
+    },
+    "XGBoost": {
+      "mejores_params": {
+        "colsample_bytree": 0.8,
+        "learning_rate": 0.1,
+        "max_depth": 2,
+        "min_child_weight": 5,
+        "rezagos": "r1"
+      },
+      "cv_rmse": 0.2936541838572152,
+      "cv_rmse_std": 0.06949646192368318,
+      "cv_mae": 0.1822058745275783,
+      "cv_r2": 0.9640389343915243,
+      "test_mae": 0.1878759900331497,
+      "test_rmse": 0.4289581410448024,
+      "test_r2": 0.9408208795847716,
+      "test_mape": 0.07786870592965112,
+      "run_id": "eb63b95fb0774e9e9dbd8c07abb40c29",
+      "model_uri": "models:/m-c36c6b12df3245fe9301b0a2945adcc0",
+      "candidatos": 32,
+      "segundos": 50.7,
+      "top_variables": {
+        "anio_inicio": 0.4066999852657318,
+        "costo_prelim_m2": 0.2524000108242035,
+        "indice_servicios_construccion_r1": 0.17990000545978546,
+        "costo_promedio_fin_m2_r1": 0.04349999874830246,
+        "precio_venta_inicial_m2": 0.0203000009059906
+      }
+    },
+    "ReglaPresupuestal": {
+      "cv_rmse": 0.417704673989819,
+      "cv_rmse_std": 0.1269134989476063,
+      "cv_mae": 0.2604874058380414,
+      "cv_r2": 0.9275080148892971,
+      "test_mae": 0.29424242424242425,
+      "test_rmse": 0.4398475192841102,
+      "test_r2": 0.9377781426823656,
+      "test_mape": 0.14065819951011185
+    },
+    "Mediana": {
+      "cv_rmse": 1.630320688425662,
+      "cv_rmse_std": 0.13277594997316022,
+      "cv_mae": 1.2476694915254236,
+      "cv_r2": -0.07013312856413982,
+      "test_mae": 1.3053333333333332,
+      "test_rmse": 1.826435508488232,
+      "test_r2": -0.07287063973433594,
+      "test_mape": 0.8608382735209261
+    }
+  },
+  "seleccion": {
+    "modelo": "XGBoost",
+    "criterio": "menor RMSE medio en validación cruzada anidada",
+    "friedman_p": 0.0742735782143343,
+    "registro": {
+      "nombre": "voreko_costo_real_m2",
+      "version": 1,
+      "alias": "candidato"
+    }
+  },
+  "friedman": {
+    "estadistico": 5.199999999999989,
+    "p": 0.0742735782143343
+  },
+  "segundos_totales": 3092.5,
+  "git_commit": "7186446",
+  "rapido": false
+}

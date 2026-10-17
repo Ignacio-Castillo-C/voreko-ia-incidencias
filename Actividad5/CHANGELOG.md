@@ -13,20 +13,20 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 
 ### Resultados
 
-Experimento completo con semilla fija (42), ejecutado desde `fuentes/entrena.ipynb`.
+Experimento completo con semilla fija (42), ejecutado desde `fuentes/entrena.ipynb` en Google Colab (CPU, 2 núcleos; Python 3.13, scikit-learn 1.6.1, XGBoost 3.4.1, MLflow 3.17.1) el 2026-10-17, sobre el commit `7186446` del repositorio. Duración: 52 min; 75 runs registrados.
 
 **Validación cruzada anidada** (externa RepeatedKFold 5×3 = 15 folds; interna GridSearchCV 5-fold), costo real en MIRR/m²:
 
 | Modelo | RMSE | MAE | R² | MAPE |
 |---|---|---|---|---|
 | **XGBoost** (seleccionado) | **0.333 ± 0.143** | **0.189** | **0.953** | **9.6 %** |
-| Random Forest | 0.355 ± 0.128 | 0.213 | 0.947 | 11.1 % |
+| Random Forest | 0.356 ± 0.129 | 0.212 | 0.947 | 11.1 % |
 | Regla presupuestal (referencia) | 0.416 ± 0.140 | 0.262 | 0.928 | 13.4 % |
 | Ridge | 0.573 ± 0.391 | 0.282 | 0.785 | 16.0 % |
 
 **Prueba (hold-out del 20 %, 75 proyectos):** XGBoost MAE 0.188, RMSE 0.429, R² 0.941, MAPE 7.8 %; la regla presupuestal obtuvo MAE 0.294, RMSE 0.440, R² 0.938, MAPE 14.1 %.
 
-**Comparación estadística** (p ajustadas por Holm): XGBoost superó a la regla presupuestal en los 15 folds (Wilcoxon p = 0.0004; t corregida de Nadeau y Bengio p = 0.092). Entre XGBoost y Random Forest no hay diferencia significativa (p = 1.00 y 0.32). Friedman entre los tres modelos ajustados: p = 0.091.
+**Comparación estadística** (p ajustadas por Holm): XGBoost superó a la regla presupuestal en los 15 folds (Wilcoxon p = 0.0004; t corregida de Nadeau y Bengio p = 0.092). Entre XGBoost y Random Forest no hay diferencia significativa (p = 1.00 y 0.28). Friedman entre los tres modelos ajustados: χ² = 5.20, p = 0.074.
 
 **Decisión:** XGBoost (`max_depth=2`, `learning_rate=0.1`, `colsample_bytree=0.8`, `min_child_weight=5`, sólo rezago 1) se registra como `voreko_costo_real_m2` con el alias `candidato`, **no** `produccion`: falta validarlo con obras reales de VOREKO.
 
@@ -34,7 +34,7 @@ Experimento completo con semilla fija (42), ejecutado desde `fuentes/entrena.ipy
 - `fuentes/train.py`: GridSearchCV de Ridge, Random Forest y XGBoost con objetivo en log; referencias de mediana y regla presupuestal; validación anidada; prueba t corregida, Wilcoxon, Friedman y Holm; registro en MLflow de parámetros, métricas, dataset, artefactos, modelos con firma y Model Registry.
 - `fuentes/visualizaciones.py`: 5 figuras exploratorias que devuelven las cifras que las sustentan.
 - `fuentes/entrena.ipynb`: notebook de Colab con todo el flujo, ejecutado con salidas.
-- `evidencias_mlflow/`: 9 capturas del panel de MLflow (experimento, runs, detalle con parámetros, métricas y etiquetas, artefactos, comparación, RMSE por fold y Model Registry).
+- `evidencias_mlflow/`: 9 capturas del panel de MLflow de la ejecución en Colab (experimento, runs, detalle con parámetros, métricas y etiquetas, artefactos, comparación, RMSE por fold y Model Registry).
 - Alerta derivada para VOREKO (costo estimado > 1.5 × preliminar), evaluada en prueba: recall 0.692, precisión 0.783, ROC-AUC 0.859.
 - `tests/test_actividad5.py`: 12 pruebas de limpieza, reglas de negocio, fuga de información y estadística.
 
