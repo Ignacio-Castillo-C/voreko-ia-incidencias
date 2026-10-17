@@ -1,0 +1,29 @@
+# --- Seguimiento local de MLflow (se reproduce con fuentes/train.py) ---
+mlflow.db
+mlruns/
+mlartifacts/
+
+# --- Python / Jupyter ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+
+# --- Secretos y credenciales: nunca publicar ---
+.env
+.env.*
+*.pem
+*.key
+*token*
+*secret*
+*credential*
+
+# --- Temporales ---
+.DS_Store
+Thumbs.db
+~$*
+
+# --- Paquete de resultados descargado desde Colab ---
+resultados_colab.zip
