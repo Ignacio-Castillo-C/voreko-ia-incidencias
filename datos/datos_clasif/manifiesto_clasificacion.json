@@ -1,0 +1,24 @@
+{
+  "version_datos": "1.0.0-clasif",
+  "deriva_de": {
+    "version": "1.0.0",
+    "sha256_csv_limpio": "47e7de7fe5d195f1d1852bce258d43333044206db340d88128b069ed3fb5424b"
+  },
+  "sha256_csv_clasificacion": "573f20519a3f98c05721612f215a708e03443802dc8eebf49ec7dd64662371bc",
+  "filas": 372,
+  "etiqueta": "riesgo_sobrecosto = 1 si (costo_real_m2 − costo_prelim_m2)/costo_prelim_m2 > 0.50",
+  "positivos": 101,
+  "prevalencia": 0.2715,
+  "obras_exactamente_en_50pct": 30,
+  "excluidas_a6": {
+    "duracion_trimestres": "Duración real, no planeada: en las 372 obras año/trimestre de término = inicio + duración, y la fecha de término es posterior al inicio (fuga de información)."
+  },
+  "columnas_agregadas": [
+    "desviacion_real",
+    "riesgo_sobrecosto",
+    "riesgo_sobrecosto_20",
+    "riesgo_sobrecosto_30",
+    "riesgo_sobrecosto_40",
+    "riesgo_sobrecosto_50"
+  ]
+}

@@ -1,16 +1,41 @@
-# Actividad 5 — VOREKO IA: datos, entrenamiento y registro en MLflow
+# VOREKO IA — Actividad 6
 
-Master en Inteligencia Artificial · Universidad Tecmilenio — *Gestión de Proyectos de IA*.
-Autor: José Ignacio Castillo Camacho.
+**Evaluación y validación del sistema inteligente de alertas de sobrecosto**
 
-Estimación temprana del costo real de construcción por m² (dataset UCI *Residential Building*) con Ridge, Random Forest y XGBoost, GridSearchCV, validación cruzada anidada, comparación estadística y seguimiento en MLflow.
+Master de Inteligencia Artificial · Universidad Tecmilenio · Gestión de Proyectos de Inteligencia Artificial
+José Ignacio Castillo Camacho · AL07161745
 
-**Todo el proyecto está en la carpeta [`Actividad5/`](Actividad5/)** (documentación en su [README](Actividad5/README.md)).
+Clasificación binaria del riesgo de sobrecosto (`riesgo_sobrecosto`: desviación real del costo por m² mayor a 50 %) con el *Residential Building Data Set* (UCI, id 437), a partir de los datos y componentes de la Actividad 5.
 
-| Entregable | Ubicación |
-|---|---|
-| Datos originales y limpios | [`Actividad5/datos/`](Actividad5/datos/) |
-| Funciones de limpieza y script de entrenamiento | [`Actividad5/fuentes/datos_prep.py`](Actividad5/fuentes/datos_prep.py), [`Actividad5/fuentes/train.py`](Actividad5/fuentes/train.py) |
-| Cuaderno (ejecutado) | [`Actividad5/fuentes/entrena.ipynb`](Actividad5/fuentes/entrena.ipynb) |
-| README / CHANGELOG | [`Actividad5/README.md`](Actividad5/README.md), [`Actividad5/CHANGELOG.md`](Actividad5/CHANGELOG.md) |
-| Evidencia de MLflow | [`Actividad5/evidencias_mlflow/`](Actividad5/evidencias_mlflow/) |
+## Estructura
+
+```
+Actividad6/
+├── fuentes/
+│   ├── 02_VOREKO_Clasificacion_Sobrecostos.ipynb
+│   └── voreko_a6.py
+├── datos/datos_clasif/
+│   ├── residential_building_clasificacion.csv
+│   └── manifiesto_clasificacion.json
+├── tests/test_actividad6.py
+├── requirements.txt
+└── README.md
+```
+
+## Componentes reutilizados de la Actividad 5
+
+- `Actividad5/datos/datos_limp/residential_building_limpio.csv` (versión 1.0.0)
+- `Actividad5/fuentes/datos_prep.py`
+- `Actividad5/fuentes/train.py`
+
+## Ejecución
+
+```bash
+pip install -r Actividad6/requirements.txt
+python -m pytest -q Actividad6/tests
+cd Actividad6/fuentes
+jupyter nbconvert --to notebook --execute --inplace 02_VOREKO_Clasificacion_Sobrecostos.ipynb
+cd .. && mlflow ui --backend-store-uri sqlite:///mlflow.db
+```
+
+Experimento de MLflow: `VOREKO-A6-clasificacion-sobrecostos`. Modelo registrado: `voreko_riesgo_sobrecosto`.
