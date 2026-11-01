@@ -1,0 +1,78 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-8.3.5, pluggy-1.7.0 -- .venv/bin/python
+rootdir: FaseII
+plugins: anyio-4.15.1
+collecting ... collected 63 items
+
+tests/test_api_funcional.py::test_salud PASSED                           [  1%]
+tests/test_api_funcional.py::test_info_modelo PASSED                     [  3%]
+tests/test_api_funcional.py::test_lista_obras PASSED                     [  4%]
+tests/test_api_funcional.py::test_obra_por_id PASSED                     [  6%]
+tests/test_api_funcional.py::test_obra_inexistente PASSED                [  7%]
+tests/test_api_funcional.py::test_predecir_estructura PASSED             [  9%]
+tests/test_api_funcional.py::test_predecir_coincide_con_referencia PASSED [ 11%]
+tests/test_api_funcional.py::test_predecir_sin_factores PASSED           [ 12%]
+tests/test_api_funcional.py::test_lote_completo PASSED                   [ 14%]
+tests/test_api_funcional.py::test_lote_igual_a_individual PASSED         [ 15%]
+tests/test_api_funcional.py::test_frontend_servido PASSED                [ 17%]
+tests/test_api_funcional.py::test_documentacion_openapi PASSED           [ 19%]
+tests/test_api_funcional.py::test_cabeceras PASSED                       [ 20%]
+tests/test_casos_extremos.py::test_falta_una_variable PASSED             [ 22%]
+tests/test_casos_extremos.py::test_variables_vacias PASSED               [ 23%]
+tests/test_casos_extremos.py::test_tipo_incorrecto[abc] PASSED           [ 25%]
+tests/test_casos_extremos.py::test_tipo_incorrecto[None] PASSED          [ 26%]
+tests/test_casos_extremos.py::test_tipo_incorrecto[True] PASSED          [ 28%]
+tests/test_casos_extremos.py::test_tipo_incorrecto[valor3] PASSED        [ 30%]
+tests/test_casos_extremos.py::test_tipo_incorrecto[valor4] PASSED        [ 31%]
+tests/test_casos_extremos.py::test_no_finitos[NaN] PASSED                [ 33%]
+tests/test_casos_extremos.py::test_no_finitos[Infinity] PASSED           [ 34%]
+tests/test_casos_extremos.py::test_no_finitos[-Infinity] PASSED          [ 36%]
+tests/test_casos_extremos.py::test_no_positivos[area_construida_m2-0] PASSED [ 38%]
+tests/test_casos_extremos.py::test_no_positivos[area_construida_m2--150] PASSED [ 39%]
+tests/test_casos_extremos.py::test_no_positivos[area_terreno_m2--1] PASSED [ 41%]
+tests/test_casos_extremos.py::test_no_positivos[costo_prelim_m2-0] PASSED [ 42%]
+tests/test_casos_extremos.py::test_no_positivos[precio_venta_inicial_m2--0.5] PASSED [ 44%]
+tests/test_casos_extremos.py::test_categorias_invalidas[trimestre_inicio-0] PASSED [ 46%]
+tests/test_casos_extremos.py::test_categorias_invalidas[trimestre_inicio-5] PASSED [ 47%]
+tests/test_casos_extremos.py::test_categorias_invalidas[trimestre_inicio-2.5] PASSED [ 49%]
+tests/test_casos_extremos.py::test_categorias_invalidas[localidad-0] PASSED [ 50%]
+tests/test_casos_extremos.py::test_categorias_invalidas[localidad-21] PASSED [ 52%]
+tests/test_casos_extremos.py::test_categorias_invalidas[localidad-3.7] PASSED [ 53%]
+tests/test_casos_extremos.py::test_anio_no_entero PASSED                 [ 55%]
+tests/test_casos_extremos.py::test_varios_errores_juntos PASSED          [ 57%]
+tests/test_casos_extremos.py::test_fuera_de_rango_advierte PASSED        [ 58%]
+tests/test_casos_extremos.py::test_valor_gigante PASSED                  [ 60%]
+tests/test_casos_extremos.py::test_valor_minimo_positivo PASSED          [ 61%]
+tests/test_casos_extremos.py::test_variable_extra_se_ignora PASSED       [ 63%]
+tests/test_casos_extremos.py::test_numeros_enteros_y_decimales_equivalentes PASSED [ 65%]
+tests/test_casos_extremos.py::test_cuerpo_mal_formado[{malo] PASSED      [ 66%]
+tests/test_casos_extremos.py::test_cuerpo_mal_formado[] PASSED           [ 68%]
+tests/test_casos_extremos.py::test_cuerpo_mal_formado[[]] PASSED         [ 69%]
+tests/test_casos_extremos.py::test_cuerpo_mal_formado["hola"] PASSED     [ 71%]
+tests/test_casos_extremos.py::test_cuerpo_mal_formado[{"variables": [1, 2]}] PASSED [ 73%]
+tests/test_casos_extremos.py::test_cuerpo_mal_formado[{"otra_cosa": 1}] PASSED [ 74%]
+tests/test_casos_extremos.py::test_id_demasiado_largo PASSED             [ 76%]
+tests/test_casos_extremos.py::test_metodo_no_permitido PASSED            [ 77%]
+tests/test_casos_extremos.py::test_ruta_inexistente PASSED               [ 79%]
+tests/test_casos_extremos.py::test_lote_vacio PASSED                     [ 80%]
+tests/test_casos_extremos.py::test_lote_demasiado_grande PASSED          [ 82%]
+tests/test_casos_extremos.py::test_lote_en_el_limite PASSED              [ 84%]
+tests/test_casos_extremos.py::test_lote_mixto PASSED                     [ 85%]
+tests/test_casos_extremos.py::test_sin_modelo_responde_503 PASSED        [ 87%]
+tests/test_comportamiento_modelo.py::test_metricas_de_la_actividad_6 PASSED [ 88%]
+tests/test_comportamiento_modelo.py::test_verde_sin_sobrecostos_reales PASSED [ 90%]
+tests/test_comportamiento_modelo.py::test_nivel_coherente_con_umbrales PASSED [ 92%]
+tests/test_comportamiento_modelo.py::test_reproducible PASSED            [ 93%]
+tests/test_comportamiento_modelo.py::test_orden_de_variables_no_importa PASSED [ 95%]
+tests/test_comportamiento_modelo.py::test_cambios_minimos_cambios_pequenos PASSED [ 96%]
+tests/test_comportamiento_modelo.py::test_sensibilidad_costo_preliminar PASSED [ 98%]
+tests/test_comportamiento_modelo.py::test_tiempo_respuesta PASSED        [100%]
+
+=============================== warnings summary ===============================
+site-packages/starlette/testclient.py:37
+  site-packages/starlette/testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: FaseII/validacion/resultados/pytest_junit.xml -
+======================== 63 passed, 1 warning in 10.98s ========================
