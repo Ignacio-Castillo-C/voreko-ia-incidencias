@@ -1,0 +1,15 @@
+services:
+  voreko-ia:
+    build:
+      context: ..
+      dockerfile: FaseII/Dockerfile
+    image: voreko-ia:1.0.0
+    container_name: voreko-ia
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      LIMITE_LOTE: "500"
+      VOREKO_CORS: "*"
+      NIVEL_LOG: "INFO"
+    restart: unless-stopped

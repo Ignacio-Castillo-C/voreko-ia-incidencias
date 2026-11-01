@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VOREKO IA · Alertas de sobrecosto</title>
+<link rel="stylesheet" href="/static/estilos.css">
+</head>
+<body>
+<header class="barra">
+  <div class="marca">
+    <span class="logo">VOREKO<b>IA</b></span>
+    <span class="sub">Alertas tempranas de sobrecosto · Fase II</span>
+  </div>
+  <div id="estado-api" class="estado"><span class="punto"></span><span class="texto">Conectando con la API…</span></div>
+</header>
+
+<div class="aviso">
+  Modelo candidato de la Actividad 6, entrenado con un dataset público de Teherán (UCI 437). Los montos están en
+  <b>millones de riales</b>. El resultado es un apoyo a la decisión y no sustituye el criterio del profesional.
+</div>
+
+<nav class="pestanas" role="tablist">
+  <button class="pestana activa" data-panel="panel-obra" role="tab">Evaluar una obra</button>
+  <button class="pestana" data-panel="panel-lote" role="tab">Evaluar lote de prueba</button>
+  <button class="pestana" data-panel="panel-modelo" role="tab">Acerca del modelo</button>
+</nav>
+
+<main>
+  <section id="panel-obra" class="panel activo">
+    <div class="rejilla">
+      <form id="formulario" class="tarjeta" autocomplete="off">
+        <h2>Datos de la obra al inicio</h2>
+        <label class="campo ancho">Obra de ejemplo (75 obras de prueba)
+          <select id="selector-obra"></select>
+        </label>
+        <div id="campos-principales" class="campos"></div>
+        <details>
+          <summary>Indicadores económicos del trimestre de inicio (<span id="num-indicadores">0</span>)</summary>
+          <div id="campos-indicadores" class="campos"></div>
+        </details>
+        <div class="acciones">
+          <button type="submit" id="boton-evaluar" class="primario">Evaluar riesgo</button>
+          <button type="button" id="boton-restaurar" class="secundario">Restaurar valores</button>
+        </div>
+        <p id="error-formulario" class="error" hidden></p>
+      </form>
+
+      <section id="resultado" class="tarjeta resultado vacio" aria-live="polite">
+        <h2>Resultado</h2>
+        <p class="indicacion">Selecciona una obra y presiona «Evaluar riesgo».</p>
+        <div class="contenido" hidden>
+          <div class="semaforo-fila">
+            <div class="semaforo" aria-hidden="true"><i class="luz verde"></i><i class="luz amarillo"></i><i class="luz rojo"></i></div>
+            <div>
+              <div class="probabilidad"><span id="prob">–</span><small>%</small></div>
+              <div id="etiqueta-nivel" class="chip">–</div>
+            </div>
+          </div>
+          <div class="escala">
+            <div class="barra-escala"><span id="marcador"></span></div>
+            <div class="marcas"><span>0 %</span><span id="marca-amarillo"></span><span id="marca-rojo"></span><span>100 %</span></div>
+          </div>
+          <p id="mensaje" class="mensaje"></p>
+          <h3>¿Qué influyó más?</h3>
+          <ul id="factores" class="factores"></ul>
+          <div id="advertencias" class="advertencias" hidden></div>
+          <div id="real" class="real" hidden></div>
+          <p class="meta">Respuesta en <span id="tiempo"></span> · <span id="version"></span></p>
+          <details class="json"><summary>Ver respuesta JSON de la API</summary><pre id="json"></pre></details>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="panel-lote" class="panel">
+    <div class="tarjeta">
+      <h2>Evaluación del lote de prueba</h2>
+      <p>Envía las 75 obras de prueba en una sola llamada a <code>POST /api/predecir/lote</code> y compara el semáforo contra el sobrecosto real que tuvo cada obra.</p>
+      <button id="boton-lote" class="primario">Evaluar las 75 obras</button>
+      <div id="resumen-lote" class="resumen" hidden></div>
+      <div class="tabla-envoltura"><table id="tabla-lote" hidden>
+        <thead><tr><th>Obra</th><th>Probabilidad</th><th>Semáforo</th><th>Sobrecosto real</th><th>¿Tuvo riesgo?</th><th>Lectura</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="panel-modelo" class="panel">
+    <div class="tarjeta" id="info-modelo"><p>Cargando…</p></div>
+  </section>
+</main>
+
+<footer>
+  <a href="/docs" target="_blank" rel="noopener">Documentación interactiva (Swagger)</a> ·
+  <a href="/redoc" target="_blank" rel="noopener">ReDoc</a> ·
+  José Ignacio Castillo Camacho · Maestría en IA, Tecmilenio
+</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
