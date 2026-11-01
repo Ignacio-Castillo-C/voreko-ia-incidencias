@@ -1,0 +1,8 @@
+   modelo/artefactos/
+   validacion/resultados/capturas_tmp/
+   __pycache__/
+   .pytest_cache/
+   *.pyc
+   .venv/
+   venv/
+   .env
