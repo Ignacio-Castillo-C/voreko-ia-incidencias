@@ -46,11 +46,3 @@ API REST (FastAPI) y frontend web del sistema de alertas de sobrecosto de la Act
 ## 8. Limitaciones
 
 El dataset es de otro país, moneda y periodo inflacionario; sólo tiene 372 obras y algunas localidades con 4 proyectos; además, los costos preliminares bajos tienen poca resolución. Los resultados demuestran el método, no el desempeño esperado en obras de VOREKO.
-
-
-
-
-## 8. Limitaciones
-
-El dataset es de otro país, moneda y periodo inflacionario; sólo tiene 372 obras y algunas localidades con 4 proyectos; además, los costos preliminares bajos tienen poca resolución. Los resultados demuestran el método, no el desempeño esperado en obras de VOREKO.
-
