@@ -1,4 +1,4 @@
- VOREKO IA
+# VOREKO IA
 
 Master en Inteligencia Artificial · Universidad Tecmilenio — *Gestión de Proyectos de IA*.
 Autor: José Ignacio Castillo Camacho.
