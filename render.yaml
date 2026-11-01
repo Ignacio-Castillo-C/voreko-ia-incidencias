@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: voreko-ia
+    runtime: docker
+    repo: https://github.com/Ignacio-Castillo-C/voreko-ia-incidencias
+    branch: main
+    dockerContext: .
+    dockerfilePath: ./FaseII/Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /api/salud
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: LIMITE_LOTE
+        value: "500"
+      - key: VOREKO_CORS
+        value: "*"
+      - key: NIVEL_LOG
+        value: "INFO"
