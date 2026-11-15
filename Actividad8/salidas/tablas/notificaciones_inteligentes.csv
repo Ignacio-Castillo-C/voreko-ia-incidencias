@@ -1,0 +1,5 @@
+ventana,hora,incidente,tipo,severidad,regla,motivo,canales,runbook,util
+32,2026-11-09 08:15:00,INC-01,degradacion_por_drift,P3,drift_datos,apertura,correo,RB-01,True
+33,2026-11-09 08:30:00,INC-01,degradacion_por_drift,P2,calidad_recall_bajo,escalamiento,"slack, correo",RB-01,True
+50,2026-11-09 12:45:00,INC-02,saturacion_servicio,P2,latencia_burn_rate,apertura,"slack, correo",RB-02,True
+71,2026-11-09 18:00:00,INC-03,version_defectuosa,P1,canary_degradado,apertura,"llamada, slack",RB-03,True

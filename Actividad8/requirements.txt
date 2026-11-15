@@ -1,0 +1,10 @@
+scikit-learn==1.9.1
+xgboost==3.4.1
+mlflow==3.18.0
+opentelemetry-sdk==1.45.2
+pyyaml
+scipy
+matplotlib
+pandas
+numpy
+joblib

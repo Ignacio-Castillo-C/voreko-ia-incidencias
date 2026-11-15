@@ -1,0 +1,126 @@
+servicio: voreko-ia-riesgo-sobrecosto
+periodo_slo_horas: 24
+ventana_minutos: 15
+slo:
+  disponibilidad:
+    objetivo: 0.995
+    sli: solicitudes sin error de servidor / solicitudes totales
+  latencia:
+    objetivo: 0.95
+    umbral_ms: 300
+    sli: solicitudes con latencia menor a 300 ms / solicitudes totales
+  calidad:
+    recall_minimo: 0.45
+    precision_minima: 0.40
+    ventanas_moviles: 4
+  datos:
+    psi_umbral: 0.20
+    ks_umbral: 0.10
+    pct_variables_max: 0.30
+    psi_leve: 0.18
+    ventanas_moviles: 4
+burn_rate:
+  ventana_corta: 1
+  ventana_larga: 4
+reglas:
+  - nombre: disponibilidad_burn_rate
+    severidad: P1
+    expr: burn_disp_corta >= 10 and burn_disp_larga >= 5
+    para_ventanas: 1
+    slo: disponibilidad
+    runbook: RB-04
+    accion: reiniciar_servicio
+    canales: [llamada, slack]
+  - nombre: canary_degradado
+    severidad: P1
+    expr: canary_activo == 1 and canary_n >= 15 and razon_rojo_canary < 0.5
+    para_ventanas: 1
+    slo: calidad
+    runbook: RB-03
+    accion: rollback_modelo
+    canales: [llamada, slack]
+  - nombre: latencia_burn_rate
+    severidad: P2
+    expr: burn_lat_corta >= 6 and burn_lat_larga >= 2
+    para_ventanas: 1
+    slo: latencia
+    runbook: RB-02
+    accion: escalar_replicas
+    canales: [slack, correo]
+  - nombre: calidad_recall_bajo
+    severidad: P2
+    expr: recall_movil < 0.45
+    para_ventanas: 2
+    slo: calidad
+    runbook: RB-01
+    accion: reentrenar_modelo
+    canales: [slack, correo]
+  - nombre: drift_datos
+    severidad: P3
+    expr: n_drift >= 200 and pct_vars_drift > 0.30 and psi_global > 0.20
+    para_ventanas: 1
+    slo: datos
+    runbook: RB-01
+    accion: notificar
+    canales: [correo]
+  - nombre: cpu_saturacion
+    severidad: P3
+    expr: cpu >= 0.85
+    para_ventanas: 2
+    slo: latencia
+    runbook: RB-02
+    accion: notificar
+    canales: [correo]
+  - nombre: latencia_umbral_dinamico
+    severidad: P3
+    expr: p95_ms > umbral_dinamico_p95
+    para_ventanas: 2
+    slo: latencia
+    runbook: RB-02
+    accion: notificar
+    canales: [correo]
+  - nombre: presupuesto_latencia_bajo
+    severidad: P3
+    expr: presupuesto_lat_restante < 0.25
+    para_ventanas: 1
+    slo: latencia
+    runbook: RB-02
+    accion: notificar
+    canales: [correo]
+  - nombre: drift_leve
+    severidad: INFO
+    expr: n_drift >= 200 and psi_global > 0.18
+    para_ventanas: 1
+    slo: datos
+    runbook: ninguno
+    accion: tablero
+    canales: [tablero]
+correlaciones:
+  - incidente: degradacion_por_drift
+    reglas: [drift_datos, calidad_recall_bajo]
+  - incidente: saturacion_servicio
+    reglas: [latencia_burn_rate, cpu_saturacion, latencia_umbral_dinamico, presupuesto_latencia_bajo]
+  - incidente: version_defectuosa
+    reglas: [canary_degradado]
+  - incidente: caida_servicio
+    reglas: [disponibilidad_burn_rate]
+reduccion_ruido:
+  deduplicacion: true
+  resolver_tras_ventanas_limpias: 2
+  umbral_dinamico:
+    metrica: p95_ms
+    historial_ventanas: 12
+    desviaciones: 3
+alertas_ingenuas:
+  - nombre: p95_mayor_300
+    expr: p95_ms > 300
+  - nombre: error_servidor
+    expr: errores_servidor >= 1
+  - nombre: recall_ventana_bajo
+    expr: recall_ventana < 0.45
+  - nombre: psi_variable_alto
+    expr: psi_max_ventana > 0.20
+  - nombre: cpu_mayor_80
+    expr: cpu > 0.80
+  - nombre: pocos_rojos
+    expr: tasa_rojo_ventana < 0.20

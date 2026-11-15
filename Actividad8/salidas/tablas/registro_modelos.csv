@@ -1,0 +1,4 @@
+version,aliases,umbral_rojo,estado,descripcion
+1,anterior,0.39,vigente,Modelo estable de la Fase II (umbral 0.39).
+2,champion,0.39,vigente,Reentrenado por INC-01 con precios actualizados.
+3,,0.7,rechazado_por_rollback,Release candidata desplegada en canary al 20 %.
