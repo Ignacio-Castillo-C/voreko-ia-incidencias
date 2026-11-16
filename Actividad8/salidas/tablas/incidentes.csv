@@ -1,0 +1,4 @@
+incidente,tipo,severidad_final,reglas,inicio_real,deteccion,accion_correctiva,recuperacion,MTTD_min,MTTR_min,diagnostico,diagnostico_correcto,resuelto
+INC-01,degradacion_por_drift,P2,"drift_datos, calidad_recall_bajo",2026-11-09 07:30:00,2026-11-09 08:15:00,2026-11-09 09:00:00,2026-11-09 09:45:00,45.0,90.0,alza generalizada de precios,True,True
+INC-02,saturacion_servicio,P2,"latencia_burn_rate, latencia_umbral_dinamico",2026-11-09 12:31:00,2026-11-09 12:45:00,2026-11-09 12:55:00,2026-11-09 13:30:00,14.0,45.0,saturación del servicio,True,True
+INC-03,version_defectuosa,P1,canary_degradado,2026-11-09 17:30:00,2026-11-09 18:00:00,2026-11-09 18:02:00,2026-11-09 18:30:00,30.0,30.0,configuración de umbral,True,True
