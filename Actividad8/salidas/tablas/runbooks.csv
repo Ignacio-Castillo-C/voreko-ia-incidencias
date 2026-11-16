@@ -1,5 +1,0 @@
-runbook,nombre,tipo,escalamiento
-RB-01,Degradación del modelo por data drift,semiautomático,"Si el challenger no pasa la compuerta, se mantiene el champion y se avisa al responsable del modelo."
-RB-02,Aumento de latencia del servicio,automatizado,"Si la latencia no vuelve al SLO en 30 minutos, se escala al responsable de infraestructura."
-RB-03,Versión defectuosa en canary,automatizado,"Si el rollback falla, se apaga el canary por feature flag y se avisa al responsable del modelo."
-RB-04,Caída del servicio,automatizado,"Si el reinicio no recupera el servicio, se avisa por llamada al responsable."
