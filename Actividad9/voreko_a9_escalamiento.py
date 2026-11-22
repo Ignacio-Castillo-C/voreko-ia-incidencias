@@ -11,8 +11,25 @@ os.environ["MLFLOW_DISABLE_AGENT_HINT"] = "1"
 PAQUETES = ["scikit-learn==1.9.1", "xgboost==3.4.1", "mlflow-skinny==3.17.2", "pandas==2.2.3", "numpy==2.1.3", "scipy==1.16.3",
             "joblib==1.4.2", "fastapi==0.115.12", "uvicorn==0.34.2", "pydantic==2.11.4", "httpx==0.28.1", "skl2onnx==1.20.0",
             "onnx==1.23.2", "onnxruntime==1.29.0", "psutil", "matplotlib"]
-if os.getenv("VOREKO_SIN_INSTALAR") != "1":
+import importlib.metadata as metadatos
+
+
+def instalado(paquete):
+    nombre, _, version = paquete.partition("==")
+    try:
+        return not version or metadatos.version(nombre) == version
+    except metadatos.PackageNotFoundError:
+        return False
+
+
+FALTANTES = [p for p in PAQUETES if not instalado(p)]
+if FALTANTES and os.getenv("VOREKO_SIN_INSTALAR") != "1":
     subprocess.run([sys.executable, "-m", "pip", "install", "-q", *PAQUETES], check=True)
+    print("Dependencias instaladas. El entorno se reinicia; vuelve a ejecutar todas las celdas.")
+    if "google.colab" in sys.modules or "ipykernel" in sys.modules:
+        os.kill(os.getpid(), 9)
+    sys.exit(0)
+print("Dependencias listas:", ", ".join(f"{p.partition('==')[0]} {metadatos.version(p.partition('==')[0])}" for p in PAQUETES[:6]))
 
 
 # 2. Repositorio, modelo de la Fase II y datos
