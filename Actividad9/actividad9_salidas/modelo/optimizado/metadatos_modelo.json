@@ -1,0 +1,454 @@
+{
+ "nombre": "voreko_riesgo_sobrecosto",
+ "version": "1.1.0",
+ "algoritmo": "RandomForestClassifier podado a 150 árboles, exportado a ONNX (float64)",
+ "origen": "Actividad 9 · versión optimizada del modelo de la Fase II",
+ "objetivo": "Probabilidad de que el costo real por m² supere en más de 50 % al costo preliminar",
+ "dataset": "Residential Building Data Set (UCI id 437, CC BY 4.0) · 372 obras · montos en riales iraníes",
+ "fecha_entrenamiento": "2026-11-22 00:53 UTC",
+ "semilla": 42,
+ "hiperparametros": {
+  "max_depth": "None",
+  "max_features": "0.5",
+  "min_samples_leaf": "5",
+  "rezagos": "r1"
+ },
+ "umbrales": {
+  "rojo": 0.39,
+  "amarillo": 0.14
+ },
+ "regla_umbral": "Máxima precisión con recall ≥ 0.80 en predicciones fuera de pliegue (5 pliegues)",
+ "metricas_prueba": {
+  "recall": 0.5385,
+  "precision": 0.5385,
+  "roc_auc": 0.8077
+ },
+ "matriz_confusion_prueba": {
+  "VP": 14,
+  "FP": 11,
+  "FN": 12,
+  "VN": 38
+ },
+ "semaforo_prueba": {
+  "verde": {
+   "obras": 15,
+   "con_sobrecosto_real": 0
+  },
+  "amarillo": {
+   "obras": 35,
+   "con_sobrecosto_real": 12
+  },
+  "rojo": {
+   "obras": 25,
+   "con_sobrecosto_real": 14
+  }
+ },
+ "obras": {
+  "entrenamiento": 297,
+  "prueba": 75,
+  "prevalencia_prueba": 0.3467
+ },
+ "variables": [
+  {
+   "nombre": "anio_inicio",
+   "tipo": "numérica",
+   "descripcion": "Año de inicio (calendario persa, 4 dígitos)",
+   "unidad": "",
+   "minimo": 1372.0,
+   "maximo": 1388.0,
+   "mediana": 1382.0,
+   "tipico": 1382.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "trimestre_inicio",
+   "tipo": "categórica",
+   "descripcion": "Trimestre de inicio (persa; 1 = primavera)",
+   "unidad": "",
+   "minimo": 1.0,
+   "maximo": 4.0,
+   "mediana": 2.0,
+   "tipico": 1,
+   "valores_permitidos": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "nombre": "localidad",
+   "tipo": "categórica",
+   "descripcion": "Localidad del proyecto (código postal agrupado 1–20)",
+   "unidad": "",
+   "minimo": 1.0,
+   "maximo": 20.0,
+   "mediana": 8.0,
+   "tipico": 4,
+   "valores_permitidos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ]
+  },
+  {
+   "nombre": "area_construida_m2",
+   "tipo": "numérica",
+   "descripcion": "Área total construida del edificio",
+   "unidad": "m²",
+   "minimo": 200.0,
+   "maximo": 15670.0,
+   "mediana": 1160.0,
+   "tipico": 1160.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "area_terreno_m2",
+   "tipo": "numérica",
+   "descripcion": "Área del terreno",
+   "unidad": "m²",
+   "minimo": 60.0,
+   "maximo": 4870.0,
+   "mediana": 300.0,
+   "tipico": 300.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "costo_prelim_m2",
+   "tipo": "numérica",
+   "descripcion": "Costo preliminar estimado por m2 con precios al inicio",
+   "unidad": "millones de riales por m²",
+   "minimo": 0.1,
+   "maximo": 6.4,
+   "mediana": 1.4,
+   "tipico": 1.4,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "costo_prelim_m2_base",
+   "tipo": "numérica",
+   "descripcion": "Costo preliminar equivalente por m2 en el año base (1383)",
+   "unidad": "millones de riales por m²",
+   "minimo": 1.9308,
+   "maximo": 26.4804,
+   "mediana": 5.1156,
+   "tipico": 5.1156,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "precio_venta_inicial_m2",
+   "tipo": "numérica",
+   "descripcion": "Precio de la unidad por m2 al inicio del proyecto",
+   "unidad": "millones de riales por m²",
+   "minimo": 0.8,
+   "maximo": 57.0,
+   "mediana": 7.9,
+   "tipico": 7.9,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "permisos_emitidos_r1",
+   "tipo": "numérica",
+   "descripcion": "Número de permisos de construcción emitidos",
+   "unidad": "",
+   "minimo": 1562.0,
+   "maximo": 7196.0,
+   "mediana": 3629.0,
+   "tipico": 3629.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "indice_servicios_construccion_r1",
+   "tipo": "numérica",
+   "descripcion": "Índice de servicios de construcción (BSI), año base",
+   "unidad": "",
+   "minimo": 12.1,
+   "maximo": 274.0,
+   "mediana": 72.9,
+   "tipico": 72.9,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "indice_precios_materiales_r1",
+   "tipo": "numérica",
+   "descripcion": "Índice de precios al mayoreo de materiales (WPI), año base",
+   "unidad": "",
+   "minimo": 10.03,
+   "maximo": 225.0,
+   "mediana": 78.63,
+   "tipico": 78.63,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "area_permisos_m2_r1",
+   "tipo": "numérica",
+   "descripcion": "Área total de los permisos emitidos por el municipio",
+   "unidad": "m²",
+   "minimo": 0.92,
+   "maximo": 6.88,
+   "mediana": 3.25,
+   "tipico": 3.25,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "liquidez_acumulada_r1",
+   "tipo": "numérica",
+   "descripcion": "Liquidez acumulada",
+   "unidad": "millones de riales",
+   "minimo": 381936.4,
+   "maximo": 21719228.0,
+   "mediana": 4270877.0,
+   "tipico": 4270877.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "inversion_privada_edificacion_r1",
+   "tipo": "numérica",
+   "descripcion": "Inversión del sector privado en edificios nuevos",
+   "unidad": "millones de riales",
+   "minimo": 2872.0,
+   "maximo": 186909.0,
+   "mediana": 38190.0,
+   "tipico": 38190.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "indice_precio_suelo_r1",
+   "tipo": "numérica",
+   "descripcion": "Índice de precio del suelo, año base",
+   "unidad": "millones de riales",
+   "minimo": 136.0,
+   "maximo": 3193.8,
+   "mediana": 859.0,
+   "tipico": 859.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "num_creditos_r1",
+   "tipo": "numérica",
+   "descripcion": "Número de créditos otorgados por bancos en el trimestre",
+   "unidad": "",
+   "minimo": 17.03,
+   "maximo": 432.4,
+   "mediana": 162.75,
+   "tipico": 162.75,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "monto_creditos_r1",
+   "tipo": "numérica",
+   "descripcion": "Monto de créditos otorgados por bancos en el trimestre",
+   "unidad": "millones de riales",
+   "minimo": 1544.0,
+   "maximo": 731435.0,
+   "mediana": 104456.0,
+   "tipico": 104456.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "tasa_interes_r1",
+   "tipo": "numérica",
+   "descripcion": "Tasa de interés de los créditos",
+   "unidad": "%",
+   "minimo": 11.0,
+   "maximo": 15.0,
+   "mediana": 15.0,
+   "tipico": 15.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "costo_promedio_fin_m2_r1",
+   "tipo": "numérica",
+   "descripcion": "Costo promedio de construcción privada al terminar",
+   "unidad": "millones de riales por m²",
+   "minimo": 1.836,
+   "maximo": 41.8865,
+   "mediana": 10.149,
+   "tipico": 10.149,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "costo_promedio_inicio_m2_r1",
+   "tipo": "numérica",
+   "descripcion": "Costo promedio de construcción privada al iniciar",
+   "unidad": "millones de riales por m²",
+   "minimo": 2.111,
+   "maximo": 47.415600000000005,
+   "mediana": 12.033,
+   "tipico": 12.033,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "tipo_cambio_oficial_r1",
+   "tipo": "numérica",
+   "descripcion": "Tipo de cambio oficial respecto al dólar",
+   "unidad": "millones de riales",
+   "minimo": 0.0015917499999999,
+   "maximo": 0.00996733,
+   "mediana": 0.0081483299999999,
+   "tipico": 0.0081483299999999,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "tipo_cambio_mercado_r1",
+   "tipo": "numérica",
+   "descripcion": "Tipo de cambio no oficial (mercado) respecto al dólar",
+   "unidad": "millones de riales",
+   "minimo": 0.001601,
+   "maximo": 0.0100992999999999,
+   "mediana": 0.008393,
+   "tipico": 0.008393,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "inpc_r1",
+   "tipo": "numérica",
+   "descripcion": "Índice de precios al consumidor (CPI), año base",
+   "unidad": "",
+   "minimo": 11.62,
+   "maximo": 204.7,
+   "mediana": 83.55,
+   "tipico": 83.55,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "inpc_vivienda_r1",
+   "tipo": "numérica",
+   "descripcion": "CPI de vivienda, agua, combustible y energía, año base",
+   "unidad": "",
+   "minimo": 10.06,
+   "maximo": 222.6,
+   "mediana": 80.05,
+   "tipico": 80.05,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "indice_bolsa_r1",
+   "tipo": "numérica",
+   "descripcion": "Índice del mercado de valores",
+   "unidad": "",
+   "minimo": 363.13,
+   "maximo": 13596.37,
+   "mediana": 6703.06,
+   "tipico": 6703.06,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "poblacion_ciudad_r1",
+   "tipo": "numérica",
+   "descripcion": "Población de la ciudad",
+   "unidad": "",
+   "minimo": 8435.75,
+   "maximo": 50928.0,
+   "mediana": 25464.0,
+   "tipico": 25464.0,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "precio_oro_onza_r1",
+   "tipo": "numérica",
+   "descripcion": "Precio del oro por onza",
+   "unidad": "millones de riales",
+   "minimo": 0.1415426,
+   "maximo": 2.606321,
+   "mediana": 0.8175269,
+   "tipico": 0.8175269,
+   "valores_permitidos": null
+  },
+  {
+   "nombre": "indice_tiempo_inicio",
+   "tipo": "numérica",
+   "descripcion": "Trimestres transcurridos desde 1372 T0 al inicio",
+   "unidad": "",
+   "minimo": 2.0,
+   "maximo": 68.0,
+   "mediana": 42.0,
+   "tipico": 42.0,
+   "valores_permitidos": null
+  }
+ ],
+ "variables_categoricas": [
+  "trimestre_inicio",
+  "localidad"
+ ],
+ "variables_numericas": [
+  "anio_inicio",
+  "area_construida_m2",
+  "area_terreno_m2",
+  "costo_prelim_m2",
+  "costo_prelim_m2_base",
+  "precio_venta_inicial_m2",
+  "permisos_emitidos_r1",
+  "indice_servicios_construccion_r1",
+  "indice_precios_materiales_r1",
+  "area_permisos_m2_r1",
+  "liquidez_acumulada_r1",
+  "inversion_privada_edificacion_r1",
+  "indice_precio_suelo_r1",
+  "num_creditos_r1",
+  "monto_creditos_r1",
+  "tasa_interes_r1",
+  "costo_promedio_fin_m2_r1",
+  "costo_promedio_inicio_m2_r1",
+  "tipo_cambio_oficial_r1",
+  "tipo_cambio_mercado_r1",
+  "inpc_r1",
+  "inpc_vivienda_r1",
+  "indice_bolsa_r1",
+  "poblacion_ciudad_r1",
+  "precio_oro_onza_r1",
+  "indice_tiempo_inicio"
+ ],
+ "importancia_global_top10": {
+  "num__area_construida_m2": 0.1082,
+  "num__costo_promedio_inicio_m2_r1": 0.096,
+  "num__area_terreno_m2": 0.0865,
+  "num__inversion_privada_edificacion_r1": 0.0687,
+  "num__costo_prelim_m2_base": 0.0566,
+  "num__indice_bolsa_r1": 0.0529,
+  "num__costo_prelim_m2": 0.0526,
+  "num__costo_promedio_fin_m2_r1": 0.0518,
+  "num__precio_venta_inicial_m2": 0.0493,
+  "num__poblacion_ciudad_r1": 0.0389
+ },
+ "versiones": {
+  "python": "3.13.18",
+  "scikit-learn": "1.9.1",
+  "numpy": "2.1.3",
+  "pandas": "2.2.3",
+  "joblib": "1.4.2",
+  "onnx": "1.23.2",
+  "onnxruntime": "1.29.0"
+ },
+ "huellas_sha256": {
+  "datos_clasificacion_a6": "573f20519a3f98c05721612f215a708e03443802dc8eebf49ec7dd64662371bc",
+  "modelo_joblib": "e002fab82746a320162a9345ab7fc9380e0b4f631091b1229bada079ddaed5f6",
+  "modelo_onnx": "0f16c3aae423845bc93ad1d05a31ca769213e52d5c3d1432da395649d8759383"
+ },
+ "verificaciones": [
+  "El modelo empaquetado da las mismas probabilidades que el pipeline de la Actividad 6 en las 75 obras de prueba (diferencia < 1e-12)",
+  "Umbral de decisión reproducido: 0.39",
+  "recall en prueba reproducido: 0.538",
+  "precision en prueba reproducido: 0.560",
+  "roc_auc en prueba reproducido: 0.803"
+ ],
+ "archivo_modelo": "modelo_riesgo.onnx",
+ "salida_probabilidades": "probabilities"
+}

@@ -1,0 +1,4 @@
+configuracion,arranque_s,rss_reposo_mb,bytes_respuesta,tasa_aciertos_cache
+"Actual (scikit-learn 300, sin caché)",3.996678434000387,210.35008,1000,
+Optimizada sin caché,0.9134625990000131,108.797952,1000,
+Optimizada con caché (30 % repetidas),0.4729135550001047,101.564416,1000,0.2977

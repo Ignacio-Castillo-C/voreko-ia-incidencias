@@ -1,0 +1,3 @@
+entorno,paquetes_mb,instalacion_s,imagen_estimada_mb,librerias_pesadas_presentes
+actual,262.425164,3.16403794200005,412.425164,"sklearn, pandas, scipy, joblib"
+optimizado,129.361715,1.991180372999679,279.361715,[]

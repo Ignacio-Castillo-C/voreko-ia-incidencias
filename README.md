@@ -46,3 +46,16 @@ API REST (FastAPI) y frontend web del sistema de alertas de sobrecosto de la Act
 ## 8. Limitaciones
 
 El dataset es de otro país, moneda y periodo inflacionario; sólo tiene 372 obras y algunas localidades con 4 proyectos; además, los costos preliminares bajos tienen poca resolución. Los resultados demuestran el método, no el desempeño esperado en obras de VOREKO.
+
+
+## Actividad 9 — Escalamiento eficiente, optimización de costos y gobernanza responsable
+
+Poda del Random Forest y exportación a ONNX, microservicio de inferencia ligero, pruebas de carga, modelo de costos FinOps por escenario, auditoría de fairness con mitigación y auditoría técnica de la API.
+
+| Entregable | Ubicación |
+|---|---|
+| Cuaderno (ejecutado) y script | [`Actividad9/VOREKO_A9_Escalamiento_Gobernanza.ipynb`](Actividad9/VOREKO_A9_Escalamiento_Gobernanza.ipynb), [`Actividad9/voreko_a9_escalamiento.py`](Actividad9/voreko_a9_escalamiento.py) |
+| Microservicio optimizado | [`Actividad9/api/`](Actividad9/api/) |
+| Modelo optimizado (ONNX) | [`Actividad9/modelo/optimizado/`](Actividad9/modelo/optimizado/) |
+| Despliegue en Cloud Run y trabajo nocturno | [`Actividad9/despliegue/`](Actividad9/despliegue/) |
+| Tablas y figuras | [`Actividad9/actividad9_salidas/`](Actividad9/actividad9_salidas/) |

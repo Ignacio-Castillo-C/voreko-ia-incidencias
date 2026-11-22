@@ -1,0 +1,16 @@
+componente,situacion_actual,evidencia
+Plataforma,"Render (PaaS), plan free",render.yaml
+Región,oregon,render.yaml
+Instancias,"1 contenedor, sin réplicas ni autoescalado",render.yaml
+Servidor,uvicorn con 1 worker (proceso único),FaseII/Dockerfile (CMD)
+Patrón,Monolito: API + frontend + modelo en el mismo contenedor,FaseII/Dockerfile
+Modelo,"Random Forest scikit-learn, 300 árboles, 12,066 nodos, float64",metadatos_modelo.json
+Filas por consulta con factores,29 (1 obra + 28 variaciones),FaseII/api/servicio_modelo.py
+Tamaño del modelo,0.39 MB (joblib comprimido),modelo_riesgo.joblib
+Dependencias de inferencia,"237 MB instalados (scikit-learn, SciPy, pandas, NumPy, FastAPI)",requirements-api.txt
+Entrenamiento,Se reentrena dentro de la imagen en cada construcción,FaseII/Dockerfile (etapa 1)
+CORS,"VOREKO_CORS = ""*""",render.yaml
+Autenticación,Ninguna en /api/predecir,FaseII/api/main.py
+Caché de resultados,No existe,FaseII/api/servicio_modelo.py
+Lotes,"/api/predecir/lote con máximo ""500"" obras",render.yaml
+Monitoreo,Bitácora a stdout; tablero y alertas de la Actividad 8 (simulados),Actividad8/

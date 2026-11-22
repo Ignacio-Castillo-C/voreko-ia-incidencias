@@ -1,0 +1,25 @@
+apiVersion: run.googleapis.com/v1
+kind: Job
+metadata:
+  name: voreko-reevaluacion-nocturna
+  labels:
+    proyecto: voreko
+    componente: lote-nocturno
+    centro-costo: voreko-ia
+spec:
+  template:
+    spec:
+      taskCount: 1
+      template:
+        spec:
+          maxRetries: 2
+          timeoutSeconds: 900
+          serviceAccountName: voreko-lote@PROYECTO.iam.gserviceaccount.com
+          containers:
+            - image: us-central1-docker.pkg.dev/PROYECTO/voreko/voreko-ia-inferencia:1.1.0
+              command: ["python", "Actividad9/despliegue/job_reevaluacion_lote.py"]
+              args: ["--entrada", "/datos/obras_activas.csv", "--salida", "/datos/semaforos.csv"]
+              resources:
+                limits:
+                  cpu: "1"
+                  memory: 512Mi

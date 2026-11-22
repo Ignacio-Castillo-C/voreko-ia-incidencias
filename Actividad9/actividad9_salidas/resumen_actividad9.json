@@ -1,0 +1,51 @@
+{
+ "arboles_elegidos": 150,
+ "variante_onnx": "onnx64_150",
+ "aceleracion_consulta_inferencia": 154.97517295597834,
+ "capacidad_rps_actual": 43.925780298707856,
+ "capacidad_rps_optimizada": 604.7782480213986,
+ "capacidad_rps_optimizada_cache": 601.1205436705218,
+ "tasa_aciertos_cache": 0.2977,
+ "costos_por_escenario": {
+  "Piloto Guadalajara": {
+   "A0": 0.0,
+   "A1": 7.0,
+   "B": 49.66,
+   "C1": 7.0,
+   "C2": 0.09
+  },
+  "Regional Occidente": {
+   "A0": 0.0,
+   "A1": 7.0,
+   "B": 49.66,
+   "C1": 7.0,
+   "C2": 0.47
+  },
+  "Nacional": {
+   "A0": 0.0,
+   "A1": 25.0,
+   "B": 49.77,
+   "C1": 7.0,
+   "C2": 5.28
+  },
+  "Nacional con módulos integrados": {
+   "A0": 0.0,
+   "A1": 175.0,
+   "B": 64.75,
+   "C1": 7.0,
+   "C2": 21.41
+  }
+ },
+ "ahorro_C2_vs_A1": {
+  "Piloto Guadalajara": 0.9867,
+  "Regional Occidente": 0.9322,
+  "Nacional": 0.7888,
+  "Nacional con módulos integrados": 0.8776
+ },
+ "atributo_mayor_brecha": "zona_plusvalia",
+ "metricas_prueba_optimizado": {
+  "recall": 0.5385,
+  "precision": 0.5385,
+  "roc_auc": 0.8077
+ }
+}

@@ -1,0 +1,5 @@
+escenario,contratistas,obras_por_contratista,consultas_obra_dia,obras_activas,consultas_dia_habil,consultas_mes,pico_hora_rps
+Piloto Guadalajara,150,2.0,5,300,1500,39000,0.05610483364720653
+Regional Occidente,4000,2.5,5,10000,50000,1300000,1.8701611215735507
+Nacional,40000,2.5,5,100000,500000,13000000,18.70161121573551
+Nacional con módulos integrados,40000,2.5,20,100000,2000000,52000000,74.80644486294204

@@ -1,0 +1,12 @@
+dimension,prueba,resultado,esperado,cumple
+Seguridad,Predicción sin credenciales en la API actual,HTTP 200,401,False
+Seguridad,CORS ante un origen desconocido (API actual),*,dominio de VOREKO,False
+Seguridad,Predicción sin clave en la API optimizada,HTTP 401,401,True
+Seguridad,Predicción con clave en la API optimizada,HTTP 200,200,True
+Explicabilidad,La respuesta incluye los 3 factores principales,3,3,True
+Robustez de datos,Área 50 veces mayor que la observada,advertencia emitida,advertencia,True
+Robustez de datos,Área negativa,HTTP 422,422,True
+Trazabilidad,Versión del modelo en cada respuesta,voreko_riesgo_sobrecosto v1.1.0,nombre y versión,True
+Trazabilidad,Huella SHA-256 del modelo ONNX registrada,0f16c3aae423845b…,huella presente,True
+Reproducibilidad,Métricas de la Fase II reproducidas al reentrenar,"recall 0.538, AUC 0.803",0.538 / 0.803,True
+Equivalencia,Semáforo ONNX igual al de scikit-learn en 372 obras,0 cambios,0 cambios,True

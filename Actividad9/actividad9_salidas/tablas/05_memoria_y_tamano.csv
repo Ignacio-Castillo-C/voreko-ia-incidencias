@@ -1,0 +1,5 @@
+implementacion,archivo_mb,rss_proceso_con_modelo_mb,dependencias_mb
+scikit-learn 300 árboles (actual),0.393864,163.868672,236.672617
+scikit-learn 150 árboles,0.216073,161.304576,236.672617
+ONNX float32 300 árboles,0.454911,63.46752,112.79535
+ONNX propuesta,0.22467,60.628992,112.79535

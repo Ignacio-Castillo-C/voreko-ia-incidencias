@@ -1,0 +1,5 @@
+implementacion,obras,segundos,obras_por_segundo
+Actual: /api/predecir/lote en bloques de 500 (scikit-learn 300),100000,5.237581317999684,19092.78232231659
+scikit-learn 300 en un solo bloque,100000,1.1462338719998115,87242.23078971832
+"Propuesta: trabajo nocturno ONNX 150 árboles, bloques de 10,000",100000,1.479,67623.0
+"Propuesta: trabajo nocturno completo (arranque, lectura CSV, escritura)",100000,2.6718599559999348,37427.11131825595

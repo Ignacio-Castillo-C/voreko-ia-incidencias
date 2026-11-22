@@ -1,0 +1,4 @@
+configuracion,capacidad_rps_slo,servicio_medio_ms_c1
+"Actual (scikit-learn 300, sin caché)",43.925780298707856,24.18423080390228
+Optimizada sin caché,604.7782480213986,3.309370487275589
+Optimizada con caché (30 % repetidas),601.1205436705218,2.8200856907908536

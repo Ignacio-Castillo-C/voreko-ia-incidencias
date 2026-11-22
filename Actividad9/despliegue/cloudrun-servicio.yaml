@@ -1,0 +1,44 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: voreko-ia-inferencia
+  labels:
+    proyecto: voreko
+    componente: inferencia
+    centro-costo: voreko-ia
+spec:
+  template:
+    metadata:
+      labels:
+        proyecto: voreko
+        componente: inferencia
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "10"
+        run.googleapis.com/cpu-throttling: "true"
+        run.googleapis.com/startup-cpu-boost: "true"
+    spec:
+      containerConcurrency: 20
+      timeoutSeconds: 30
+      serviceAccountName: voreko-inferencia@PROYECTO.iam.gserviceaccount.com
+      containers:
+        - image: us-central1-docker.pkg.dev/PROYECTO/voreko/voreko-ia-inferencia:1.1.0
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          env:
+            - name: VOREKO_CORS
+              value: https://app.voreko.mx
+            - name: VOREKO_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: voreko-api-key
+                  key: latest
+          startupProbe:
+            httpGet:
+              path: /api/salud
+            periodSeconds: 2
+            failureThreshold: 15
