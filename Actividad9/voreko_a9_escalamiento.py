@@ -22,9 +22,15 @@ def instalado(paquete):
         return False
 
 
+def cargado_distinto():
+    import numpy
+    return numpy.__version__ != metadatos.version("numpy")
+
+
 FALTANTES = [p for p in PAQUETES if not instalado(p)]
-if FALTANTES and os.getenv("VOREKO_SIN_INSTALAR") != "1":
-    subprocess.run([sys.executable, "-m", "pip", "install", "-q", *PAQUETES], check=True)
+if (FALTANTES or cargado_distinto()) and os.getenv("VOREKO_SIN_INSTALAR") != "1":
+    if FALTANTES:
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", *PAQUETES], check=True)
     print("Dependencias instaladas. El entorno se reinicia; vuelve a ejecutar todas las celdas.")
     if "google.colab" in sys.modules or "ipykernel" in sys.modules:
         os.kill(os.getpid(), 9)
@@ -341,8 +347,14 @@ import venv
 
 def crear_entorno(nombre, requisitos):
     ruta = SALIDA / "entornos" / nombre
-    venv.create(ruta, with_pip=True)
     py = ruta / "bin" / "python"
+    try:
+        venv.create(ruta, with_pip=True, clear=True)
+        subprocess.run([str(py), "-m", "pip", "--version"], check=True, capture_output=True)
+    except Exception:
+        shutil.rmtree(ruta, ignore_errors=True)
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "virtualenv"], check=True)
+        subprocess.run([sys.executable, "-m", "virtualenv", "-q", str(ruta)], check=True)
     t = time.perf_counter()
     subprocess.run([str(py), "-m", "pip", "install", "-q", "--disable-pip-version-check", "-r", str(requisitos)], check=True)
     instalacion = time.perf_counter() - t
